@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "jest"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:jest/recommended"
+  ],
+  "rules": {},
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest": true
+  }
+}

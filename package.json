@@ -1,0 +1,61 @@
+{
+  "name": "mongoose-plugin-diff",
+  "version": "0.0.1",
+  "description": "Mongoose.js plugin report document modification differences.",
+  "main": "lib/index.js",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.0",
+    "eslint": "^4.13.0",
+    "eslint-plugin-jest": "^21.4.2",
+    "faker": "^4.1.0",
+    "jest": "^21.2.1",
+    "jsdoc-to-markdown": "^3.0.2",
+    "mongoose": "^4.13.6",
+    "snyk": "^1.54.1"
+  },
+  "peerDependencies": {
+    "mongoose": ">=4"
+  },
+  "scripts": {
+    "lint": "eslint lib/*.js",
+    "pretest": "npm run lint",
+    "test": "jest",
+    "watch": "npm test -- --watch --coverage",
+    "docs": "jsdoc2md -t docs/readme.hbs --files lib/*.js > README.md",
+    "prepublishOnly": "npm test -- --coverage",
+    "postpublish": "coveralls < coverage/lcov.info",
+    "preversion": "npm test -- --coverage && npm run docs",
+    "version": "npm add README.md",
+    "postversion": "git push && git push --tags"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": false,
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 100,
+        "lines": 80,
+        "statements": -10
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CentralPing/mongoose-plugin-diff"
+  },
+  "keywords": [
+    "mongoose",
+    "plugin",
+    "diff"
+  ],
+  "author": "Jason Cust <jason@centralping.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/CentralPing/mongoose-plugin-diff/issues"
+  },
+  "homepage": "https://github.com/CentralPing/mongoose-plugin-diff"
+}
