@@ -28,7 +28,7 @@
     "prepublishOnly": "npm test -- --coverage",
     "postpublish": "coveralls < coverage/lcov.info",
     "preversion": "npm test -- --coverage && npm run docs",
-    "version": "npm add README.md",
+    "version": "git add README.md",
     "postversion": "git push && git push --tags"
   },
   "jest": {
