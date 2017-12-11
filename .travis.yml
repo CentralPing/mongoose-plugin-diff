@@ -1,0 +1,30 @@
+language: node_js
+node_js:
+- 'node'
+- 'lts/*'
+- '9'
+- '8'
+- '7'
+- '6'
+- '5'
+- '4'
+env:
+- CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+services:
+- mongodb
+notifications:
+  email: false
+  slack:
+    secure: m9ZBq3AKJ9nfQj73nAweUKrBAkpILHWL5KHW5ZDe2Q+UK9VUno8Ul8IBYf35rUctTtUDdlrWDdhGjhz3a2d+e6DOoySh44dfLeu38L0Ho4v4SJdZTOMDh1iP9GwYI4GdtnTyBG4LO5a8N8te+STgEg9iyNhEcxIVCXz0DMem+vO2/q0fk3aR1n7OfkMshEKgifaqhrfggZYTnF1Mp9hPryO/dR5mDzGURhFrhEzWhiT49lLIRcLIJfup4BXynWlD6N0FS1D1oHMHcBxXahh0IAdhNQKfs1saHLSLwBzz/OO5/0tMmtlPErW/gMz0p7EEwdpf74CRNe71o0eEi5Y+ps4uQaKaWRLfvHoGqLoanMEzqgXP1OO8NcvXERJ9eCoSpEBYmj+tH7sgi2t0B2Qv1qJh8JZA2p3IbPG71nHRfyQVD7XcfJ5YwyRrggV0WhonuGDokd+3WLRcsT5YS6d76nQ1I/nGzfUagwhsyOLUm+IqEHzp3k4rnEmcwFbTTZzlxhXO5qbioDdNOTYaKulT/dQe6hwpM/MMpK/lvRDike24WLycbNpwmHE+bkLhbrvHraNrfbLCPFcLGSKstPxVjuRFVIzbokFW2TnQXS2lVNok3MXIt+fPM4OqUuRbdCpIHY40h8NFCsT0nYzeoM6HBbXLmekyFNjKvZmvCB++Udg=
+deploy:
+  provider: npm
+  email: jason@centralping.com
+  on:
+    tags: true
+    repo: CentralPing/mongoose-plugin-diff
