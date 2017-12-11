@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-- 'node'
-- 'lts/*'
+- node
+- lts/*
 - '9'
 - '8'
 - '7'
@@ -13,9 +13,9 @@ env:
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - g++-4.8
+    - g++-4.8
 services:
 - mongodb
 notifications:
@@ -28,3 +28,5 @@ deploy:
   on:
     tags: true
     repo: CentralPing/mongoose-plugin-diff
+  api_key:
+    secure: 37qAxVxn6Jiwob4XA0Y+3qg7k1GTaQiSfNJqibzYwXvc4F3P6flsOePEPlJSycKWDOwbkw06EDtWyrbteaSUQUKkWto5HiLqN7ahQ41stm2j+UcBPsrc95FSjIxBOy8gcOlgNDzL0JYGAnX5fDHiGCuoeSe68LGGsgJKuwB/QyxcuEyU6vlLAPmPo7xlm4jsJ+YOnC0qkavmjgrWcy5SXx/TePTnQzUGFFdfOcnixJCdmCdtP2agTEGCmjGFxTfmKu86InOPikEon9jTcqwJn3sfDoLPDjmO191j7zUeZQmzunim79q1CvvZwTiWpbAAsLLr9Vo3eCpONu2okChqisE4f9Mcp8bw7rcKxLwF8uZ0SgURWYrKHZn4R8ayAPJiXdEDAUJRvomMk2DTohVhqQ6iV8gP9ik5P8ZJVtTYTkDpNOOWbvEl+Sjv5qM4Xtp+BFgEuCi6iQJGzBMJyXaEitKtCKgjI7Vk9mSTGYLK16qMqOS/nxYErW9xr7c2A+wClFqmBBh0ZYibBNblvYEN/oT1cAZzCgKcYAnbZCDmEtkPV25Q1vwOy4akl6CAGrigdG8y2b9WS7iof25tqQC/0GHiaOOaLetLTD5Y3Xy0ywc/TRR7gGfqZ30iAw2YBqizqjEgQAPyWZYQwFwRCPU2eCxPkRo6qZ3EzDOLQlLLtCg=
