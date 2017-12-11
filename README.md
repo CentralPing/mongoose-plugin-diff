@@ -4,6 +4,7 @@ mongoose-plugin-diff
 [![Build Status](https://travis-ci.org/CentralPing/mongoose-plugin-diff.svg?branch=master)](https://travis-ci.org/CentralPing/mongoose-plugin-diff)
 [![Coverage Status](https://coveralls.io/repos/github/CentralPing/mongoose-plugin-diff/badge.svg)](https://coveralls.io/github/CentralPing/mongoose-plugin-diff)
 [![Dependency Status for CentralPing/mongoose-plugin-diff](https://david-dm.org/CentralPing/mongoose-plugin-diff.svg)](https://david-dm.org/CentralPing/mongoose-plugin-diff)
+[![Greenkeeper badge](https://badges.greenkeeper.io/CentralPing/mongoose-plugin-diff.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/centralping/mongoose-plugin-diff/badge.svg)](https://snyk.io/test/github/centralping/mongoose-plugin-diff)
 
 A [mongoose.js](https://github.com/Automattic/mongoose/) plugin to report document modification differences.
