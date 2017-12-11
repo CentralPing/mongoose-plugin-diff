@@ -8,6 +8,8 @@ mongoose-plugin-diff
 
 A [mongoose.js](https://github.com/Automattic/mongoose/) plugin to report document modification differences.
 
+The plugin uses mongoose's modification methods for determining which properties have been changed.
+
 *The original document values are snap shot post-init for existing documents as well as post-save for all documents.*
 
 ## Installation
@@ -29,7 +31,8 @@ schema.plugin(diffPlugin[, OPTIONS]);
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>object</code> |  |  |
-| [options.optionKey] | <code>string</code> | <code>&quot;diff&quot;</code> | the path options key to mark paths for inclusion in monitoring for modification. If no paths are tagged, document modification is monitored. |
+| [options.optionKey] | <code>string</code> | <code>&quot;diff&quot;</code> | the path options key to mark paths for inclusion in monitoring for modification. If no paths are provided or tagged, document modification is monitored. |
+| [options.paths] | <code>array</code> |  | the paths paths for monitoring for modification. If no paths are provided or tagged, document modification is monitored. |
 | [options.snapShotPath] | <code>string</code> | <code>&quot;__snapShot&quot;</code> | the path to store snap shot properties for capturing original values. |
 | [options.methodName] | <code>string</code> | <code>&quot;getDiff&quot;</code> | the method name for creating an object with the original values for modified properties. |
 
@@ -65,10 +68,13 @@ const schema = Schema({
   },
   bar: {
     type: String,
-    diff: true // indicates to monitor this field for modification
+    diff: true // indicates to monitor this property for modification
   }
 });
 schema.plugin(diffPlugin);
+
+// Alternatively, paths to monitor can be provided by the plugin options
+// schema.plugin(diffPlugin, { paths: ['bar'] });
 
 const Foo = mongoose.model('Foo', schema);
 Foo.findOne().then(foo => { // {foo: 'My orig', bar: 'My other orig'}

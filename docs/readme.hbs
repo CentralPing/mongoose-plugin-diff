@@ -8,6 +8,8 @@ mongoose-plugin-diff
 
 A [mongoose.js](https://github.com/Automattic/mongoose/) plugin to report document modification differences.
 
+The plugin uses mongoose's modification methods for determining which properties have been changed.
+
 *The original document values are snap shot post-init for existing documents as well as post-save for all documents.*
 
 ## Installation
@@ -51,10 +53,13 @@ const schema = Schema({
   },
   bar: {
     type: String,
-    diff: true // indicates to monitor this field for modification
+    diff: true // indicates to monitor this property for modification
   }
 });
 schema.plugin(diffPlugin);
+
+// Alternatively, paths to monitor can be provided by the plugin options
+// schema.plugin(diffPlugin, { paths: ['bar'] });
 
 const Foo = mongoose.model('Foo', schema);
 Foo.findOne().then(foo => { // {foo: 'My orig', bar: 'My other orig'}
