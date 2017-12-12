@@ -36,7 +36,6 @@ schema.plugin(diffPlugin[, OPTIONS]);
 | [options] | <code>Object</code> |  |  |
 | [options.optionKey] | <code>String</code> | <code>diff</code> | the options key to mark paths for inclusion in monitoring for modification. If no properties are marked then monitor entire document. |
 | [options.paths] | <code>Array</code> |  | the paths for monitoring for modification. If specified then any option keys will be ignored. |
-| [options.snapShotPath] | <code>String</code> | <code>__snapShot</code> | the path to store snap shot properties for capturing original values. |
 | [options.methodName] | <code>String</code> | <code>getDiff</code> | the method name for creating an object with the original values for modified properties. |
 
 
