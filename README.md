@@ -25,18 +25,19 @@ const diffPlugin = require('mongoose-plugin-diff');
 const schema = Schema({...});
 schema.plugin(diffPlugin[, OPTIONS]);
 ```
-<a name="module_mongoose-plugin-diff..options"></a>
+<a name="module_mongoose-plugin-diff..diffPlugin"></a>
 
-### mongoose-plugin-diff~options
-**Kind**: inner property of [<code>mongoose-plugin-diff</code>](#module_mongoose-plugin-diff)  
+### mongoose-plugin-diff~diffPlugin(schema, [options])
+**Kind**: inner method of [<code>mongoose-plugin-diff</code>](#module_mongoose-plugin-diff)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>object</code> |  |  |
-| [options.optionKey] | <code>string</code> | <code>&quot;diff&quot;</code> | the path options key to mark paths for inclusion in monitoring for modification. If no paths are provided or tagged, document modification is monitored. |
-| [options.paths] | <code>array</code> |  | the paths paths for monitoring for modification. If no paths are provided or tagged, document modification is monitored. |
-| [options.snapShotPath] | <code>string</code> | <code>&quot;__snapShot&quot;</code> | the path to store snap shot properties for capturing original values. |
-| [options.methodName] | <code>string</code> | <code>&quot;getDiff&quot;</code> | the method name for creating an object with the original values for modified properties. |
+| schema | <code>Schema</code> |  | mongoose schema |
+| [options] | <code>Object</code> |  |  |
+| [options.optionKey] | <code>String</code> | <code>diff</code> | the options key to mark paths for inclusion in monitoring for modification. If no properties are marked then monitor entire document. |
+| [options.paths] | <code>Array</code> |  | the paths for monitoring for modification. If specified then any option keys will be ignored. |
+| [options.snapShotPath] | <code>String</code> | <code>__snapShot</code> | the path to store snap shot properties for capturing original values. |
+| [options.methodName] | <code>String</code> | <code>getDiff</code> | the method name for creating an object with the original values for modified properties. |
 
 
 ## Examples
