@@ -21,6 +21,7 @@
     "comma-dangle": ["error", "never"],
     "no-use-before-define": ["error", { "functions": false }],
     "space-before-function-paren": ["error", { "anonymous": "always", "named": "never", "asyncArrow": "always" }],
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "function-paren-newline": ["error", "consistent"]
   }
 }
