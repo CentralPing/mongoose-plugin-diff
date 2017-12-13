@@ -3,23 +3,23 @@
   "version": "0.2.0",
   "description": "Mongoose.js plugin report document modification differences.",
   "main": "lib/index.js",
-  "engines" : {
-    "node" : ">=6.0.0"
+  "engines": {
+    "node": ">=6.0.0"
   },
   "dependencies": {
     "lodash": "^4.17.4"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
-    "eslint": "^4.13.0",
+    "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.4.2",
     "faker": "^4.1.0",
     "jest": "^21.2.1",
     "jsdoc-to-markdown": "^3.0.2",
-    "mongoose": "^4.13.6",
-    "snyk": "^1.54.1"
+    "mongoose": "^4.13.7",
+    "snyk": "^1.59.0"
   },
   "peerDependencies": {
     "mongoose": ">=4"
