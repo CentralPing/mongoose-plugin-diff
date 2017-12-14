@@ -99,7 +99,7 @@ newFoo.save().then(foo => {
 ```
 
 ### With Monitoring Subdocument Arrays
-_CAUTION: The following does not reflect the current output due to a possible issue with Mongoose. See issue [#5904](https://github.com/Automattic/mongoose/issues/5904) for reference. This documentation and possible code changes will be made once it is resolved._
+_CAUTION: The following does not necessarily reflect the current output due to a possible issue with Mongoose. See issue [#5904](https://github.com/Automattic/mongoose/issues/5904) for reference. This documentation and possible code changes will be made once it is resolved._
 
 If no specific properties are monitored (either by option key or plugin config) then subdocument arrays should report modifications as expected.
 ```js
