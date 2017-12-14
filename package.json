@@ -3,6 +3,11 @@
   "version": "0.2.0",
   "description": "Mongoose.js plugin report document modification differences.",
   "main": "lib/index.js",
+  "config": {
+    "mongo_host": "localhost",
+    "mongo_port": "27017",
+    "mongo_db": "unit_test"
+  },
   "engines": {
     "node": ">=6.0.0"
   },
