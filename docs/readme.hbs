@@ -33,16 +33,19 @@ const schema = Schema({foo: String, bar: String});
 schema.plugin(diffPlugin);
 
 const Foo = mongoose.model('Foo', schema);
-Foo.findOne().then(foo => { // {foo: 'My orig', bar: 'My other orig'}
+const newFoo = new Foo({foo: 'My orig', bar: 'My other orig'});
+
+newFoo.getDiff(); // {foo: undefined, bar: undefined}
+
+newFoo.save().then(foo => {
   foo.getDiff(); // {}
 
   foo.foo = 'My update';
   foo.getDiff(); // {foo: 'My orig'}
 
-  foo.foo = 'My second update';
   return foo.save();
-}).then(foo => { // {foo: 'My second update', bar: 'My other orig'}
-  foo.getDiff(); // {foo: 'My update'}
+}).then(foo => { // {foo: 'My update', bar: 'My other orig'}
+  foo.getDiff(); // {}
 });
 ```
 
@@ -50,9 +53,7 @@ Foo.findOne().then(foo => { // {foo: 'My orig', bar: 'My other orig'}
 ```js
 const diffPlugin = require('mongoose-plugin-diff');
 const schema = Schema({
-  foo: {
-    type: String
-  },
+  foo: String,
   bar: {
     type: String,
     diff: true // indicates to monitor this property for modification
@@ -63,8 +64,11 @@ schema.plugin(diffPlugin);
 // Alternatively, paths to monitor can be provided by the plugin options
 // schema.plugin(diffPlugin, { paths: ['bar'] });
 
-const Foo = mongoose.model('Foo', schema);
-Foo.findOne().then(foo => { // {foo: 'My orig', bar: 'My other orig'}
+const newFoo = new Foo({foo: 'My orig', bar: 'My other orig'});
+
+newFoo.getDiff(); // {bar: undefined}
+
+newFoo.save().then(foo => {
   foo.getDiff(); // {}
 
   foo.foo = 'My update';
@@ -73,13 +77,75 @@ Foo.findOne().then(foo => { // {foo: 'My orig', bar: 'My other orig'}
   foo.bar = 'My other update';
   foo.getDiff(); // {bar: 'My other orig'}
 
-  foo.bar = 'My other next update';
   return foo.save();
-}).then(foo => { // {foo: 'My update', bar: 'My other second update'}
-  foo.getDiff(); // {foo: 'My other update'}
+}).then(foo => {
+  foo.getDiff(); // {}
 });
 ```
 
+### With Monitoring Subdocument Arrays
+_CAUTION: The following does not reflect the current output due to a possible issue with Mongoose. See issue [#5904](https://github.com/Automattic/mongoose/issues/5904) for reference. This documentation and possible code changes will be made once it is resolved._
+
+If no specific properties are monitored (either by option key or plugin config) then subdocument arrays should report modifications as expected.
+```js
+const diffPlugin = require('mongoose-plugin-diff');
+const schema = Schema({foo: String, bar: [{far: String, boo: String}]});
+schema.plugin(diffPlugin);
+
+const Foo = mongoose.model('Foo', schema);
+const newFoo = new Foo({foo: 'My orig', bar: [{}, {far: 'My sub orig'}]});
+
+newFoo.getDiff(); // {foo: undefined, bar: [ , {far: undefined}]}
+
+newFoo.save().then(foo => {
+  foo.getDiff(); // {}
+
+  foo.bar[1].far = 'My update';
+  foo.getDiff(); // {bar: [ , {far: 'My sub orig'}]}
+
+  return foo.save();
+}).then(foo => {
+  foo.getDiff(); // {}
+});
+```
+
+Monitoring specific properties by option key or plugin config.
+```js
+const diffPlugin = require('mongoose-plugin-diff');
+const schema = Schema({
+  foo: String,
+  bar: [{
+    far: String,
+    boo: {
+      type: String,
+      diff: true // indicates to monitor this property for modification
+    }
+  }]});
+schema.plugin(diffPlugin);
+
+// Alternatively, paths to monitor can be provided by the plugin options.
+// Note the separator '.$.' to indicate a subdocument array path
+// schema.plugin(diffPlugin, { paths: ['bar.$.boo'] });
+
+const Foo = mongoose.model('Foo', schema);
+const newFoo = new Foo({foo: 'My orig', bar: [{far: 'My sub orig', boo: 'My other sub orig'}]});
+
+newFoo.getDiff(); // {bar: [{boo: undefined}]}
+
+newFoo.save().then(foo => {
+  foo.getDiff(); // {}
+
+  foo.bar[0].far = 'My sub update';
+  foo.getDiff(); // {}
+
+  foo.bar[0].boo = 'My other sub update';
+  foo.getDiff(); // {bar: [{boo: 'My other sub orig'}]}
+
+  return foo.save();
+}).then(foo => {
+  foo.getDiff(); // {}
+});
+```
 # License
 
 Apache 2.0
