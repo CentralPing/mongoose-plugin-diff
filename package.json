@@ -21,10 +21,11 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.4.2",
     "faker": "^4.1.0",
-    "jest": "^21.2.1",
+    "generate-changelog": "^1.6.0",
+    "jest": "^22.0.0",
     "jsdoc-to-markdown": "^3.0.2",
     "mongoose": "^4.13.7",
-    "snyk": "^1.59.0"
+    "snyk": "^1.68.0"
   },
   "peerDependencies": {
     "mongoose": ">=4"
@@ -36,10 +37,10 @@
     "watch": "npm test -- --watch --coverage",
     "docs": "jsdoc2md -t docs/readme.hbs --files lib/*.js > README.md",
     "prepublishOnly": "npm test -- --coverage",
-    "postpublish": "coveralls < coverage/lcov.info",
+    "publish": "coveralls < coverage/lcov.info",
     "preversion": "npm test -- --coverage && npm run docs",
-    "version": "git add README.md",
-    "postversion": "git push && git push --tags"
+    "version": "changelog > ./CHANGELOG.md",
+    "postversion": "git add CHANGELOG.md README.md && git push && git push --tags"
   },
   "jest": {
     "verbose": true,
