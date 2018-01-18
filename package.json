@@ -23,7 +23,7 @@
     "faker": "^4.1.0",
     "generate-changelog": "^1.6.0",
     "jest": "^22.0.0",
-    "jsdoc-to-markdown": "^3.0.2",
+    "jsdoc-to-markdown": "^4.0.0",
     "mongoose": "^4.13.7",
     "snyk": "^1.68.0"
   },
