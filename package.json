@@ -25,7 +25,7 @@
     "jest": "^22.0.0",
     "jsdoc-to-markdown": "^4.0.0",
     "mongoose": "^5.0.12",
-    "snyk": "^1.68.0"
+    "snyk": "^1.76.0"
   },
   "peerDependencies": {
     "mongoose": ">=4"
