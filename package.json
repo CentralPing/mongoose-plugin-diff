@@ -12,7 +12,8 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
@@ -24,8 +25,7 @@
     "generate-changelog": "^1.6.0",
     "jest": "^23.6.0",
     "jsdoc-to-markdown": "^4.0.0",
-    "mongoose": "^5.0.12",
-    "snyk": "^1.82.0"
+    "mongoose": "^5.0.12"
   },
   "peerDependencies": {
     "mongoose": ">=4"
@@ -40,7 +40,9 @@
     "publish": "coveralls < coverage/lcov.info",
     "preversion": "npm test -- --coverage && npm run docs",
     "version": "changelog > ./CHANGELOG.md",
-    "postversion": "git add CHANGELOG.md README.md && git push && git push --tags"
+    "postversion": "git add CHANGELOG.md README.md && git push && git push --tags",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "verbose": true,
@@ -69,5 +71,6 @@
   "bugs": {
     "url": "https://github.com/CentralPing/mongoose-plugin-diff/issues"
   },
-  "homepage": "https://github.com/CentralPing/mongoose-plugin-diff"
+  "homepage": "https://github.com/CentralPing/mongoose-plugin-diff",
+  "snyk": true
 }
