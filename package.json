@@ -40,7 +40,9 @@
     "publish": "coveralls < coverage/lcov.info",
     "preversion": "npm test -- --coverage && npm run docs",
     "version": "changelog > ./CHANGELOG.md",
-    "postversion": "git add CHANGELOG.md README.md && git push && git push --tags"
+    "postversion": "git add CHANGELOG.md README.md && git push && git push --tags",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "verbose": true,
@@ -69,5 +71,6 @@
   "bugs": {
     "url": "https://github.com/CentralPing/mongoose-plugin-diff/issues"
   },
-  "homepage": "https://github.com/CentralPing/mongoose-plugin-diff"
+  "homepage": "https://github.com/CentralPing/mongoose-plugin-diff",
+  "snyk": true
 }
