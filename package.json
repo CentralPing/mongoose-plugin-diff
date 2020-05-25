@@ -24,7 +24,7 @@
     "generate-changelog": "^1.6.0",
     "jest": "^23.6.0",
     "jsdoc-to-markdown": "^5.0.0",
-    "mongoose": "^5.0.12",
+    "mongoose": "^5.9.16",
     "snyk": "^2.0.0"
   },
   "peerDependencies": {
